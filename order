@@ -12,7 +12,9 @@ ARGS_PARAMETERS = {
     "delete": {"choices": ['client']}
 }
 
-API = ChefAPI.from_config_file('conf')
+API = autoconfigure()
+if not API:
+    API = ChefAPI.from_config_file('conf')
 
 
 class DefaultObject(argparse.Action):
